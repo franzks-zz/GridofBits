@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Grid of Bits</string>
+    <string name="easy_4x4">Easy (4x4)</string>
+    <string name="medium_6x6">Medium (6x6)</string>
+    <string name="hard_8x8">Hard (8x8)</string>
+    <string name="play">Play!</string>
+    <string name="best_times">Best Times</string>
+    <string name="copyright">Copyright &#169; 2015 Franz Sarmiento.</string>
+
+    <string name="title_activity_game">Game Screen</string>
+
+    <string name="title_activity_game_result">Game Result Screen</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="your_time">Your time is:</string>
+    <string name="new_best_time">This has been recorded as one of your new best times!</string>
+    <string name="play_again">Play Again!</string>
+
+    <string name="title_activity_best_times">BestTimesActivity</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+</resources>

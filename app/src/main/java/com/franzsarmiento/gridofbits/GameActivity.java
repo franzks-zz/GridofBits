@@ -137,7 +137,6 @@ public class GameActivity extends Activity {
 
         mGrid.setPadding(dpToPixels(gridPadding), 0, dpToPixels(gridPadding), 0);
 
-
         mToggles = new ToggleButton[mGridSize][mGridSize];
         mTvAnswersRow = new TextView[mGridSize];
         mTvAnswersCol = new TextView[mGridSize];
@@ -146,7 +145,7 @@ public class GameActivity extends Activity {
         int lengthOfSides = (getResources().getDisplayMetrics().
                 widthPixels - (gridLayoutPadding * 2)) / (mGridSize + 1);
 
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+        ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(
                 lengthOfSides, lengthOfSides);
 
         for (int row = 0; row < mGridSize; row++) {
@@ -155,6 +154,9 @@ public class GameActivity extends Activity {
                 toggle.setLayoutParams(layoutParams);
                 toggle.setGravity(Gravity.CENTER);
                 toggle.setTextSize(textSize);
+                toggle.setBackgroundDrawable(
+                        getResources().getDrawable(R.drawable.bit_toggle_selector));
+                toggle.setTextColor(getResources().getColor(R.color.bit_toggle_text_color));
 
                 toggle.setTextOn("1");
                 toggle.setTextOff("0");

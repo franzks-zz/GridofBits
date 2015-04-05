@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <item name="bit_toggle_text_color" type="color">#FFFFFF</item>
+    <item name="bit_toggle_off_blue" type="color">#03A9F4</item>
+    <item name="bit_toggle_on_orange" type="color">#FF9800</item>
+</resources>

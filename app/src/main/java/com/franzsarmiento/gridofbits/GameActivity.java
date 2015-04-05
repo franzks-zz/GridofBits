@@ -26,6 +26,7 @@ package com.franzsarmiento.gridofbits;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -154,9 +155,16 @@ public class GameActivity extends Activity {
                 toggle.setLayoutParams(layoutParams);
                 toggle.setGravity(Gravity.CENTER);
                 toggle.setTextSize(textSize);
-                toggle.setBackgroundDrawable(
-                        getResources().getDrawable(R.drawable.bit_toggle_selector));
+
                 toggle.setTextColor(getResources().getColor(R.color.bit_toggle_text_color));
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    toggle.setBackgroundDrawable(
+                            getResources().getDrawable(R.drawable.bit_toggle_ripple));
+                } else {
+                    toggle.setBackgroundDrawable(
+                            getResources().getDrawable(R.drawable.bit_toggle_no_ripple));
+                }
 
                 toggle.setTextOn("1");
                 toggle.setTextOff("0");

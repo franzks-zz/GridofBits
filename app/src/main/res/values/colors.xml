@@ -4,4 +4,5 @@
     <item name="bit_toggle_text_color" type="color">#FFFFFF</item>
     <item name="bit_toggle_off_blue" type="color">#03A9F4</item>
     <item name="bit_toggle_on_orange" type="color">#FF9800</item>
+    <item name="bit_toggle_ripple_color" type="color">#666</item>
 </resources>

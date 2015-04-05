@@ -10,13 +10,16 @@
         android:gravity="fill_horizontal"
         android:layout_gravity="fill_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></GridLayout>
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"></GridLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvTimer"
+        android:textSize="25sp"
         android:layout_below="@+id/grid"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
 
 </RelativeLayout>

@@ -10,7 +10,9 @@
         android:gravity="fill_horizontal"
         android:layout_gravity="fill_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></GridLayout>
+        android:layout_height="wrap_content"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"></GridLayout>
 
     <TextView
         android:layout_width="wrap_content"

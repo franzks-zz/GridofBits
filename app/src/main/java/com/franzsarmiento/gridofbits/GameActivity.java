@@ -117,7 +117,9 @@ public class GameActivity extends Activity {
         mTvAnswersRow = new TextView[mGridSize];
         mTvAnswersCol = new TextView[mGridSize];
 
-        int lengthOfSides = getResources().getDisplayMetrics().widthPixels / (mGridSize + 1);
+        int gridLayoutPadding = mGrid.getPaddingLeft();
+        int lengthOfSides = (getResources().getDisplayMetrics().
+                widthPixels - (gridLayoutPadding * 2)) / (mGridSize + 1);
 
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
                 lengthOfSides, lengthOfSides);

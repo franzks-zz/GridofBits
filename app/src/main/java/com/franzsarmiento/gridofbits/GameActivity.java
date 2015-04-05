@@ -108,10 +108,35 @@ public class GameActivity extends Activity {
         }
     }
 
+    // Since the grid is built programmatically and not through XML, some dirty computations are
+    // needed to accommodate varying display densities. The board also needs to resize depending
+    // on the user's selected difficulty to avoid making small grids too spaced out and large grids
+    // too cluttered.
     private void buildGrid() {
         mGrid = (GridLayout) findViewById(R.id.grid);
         mGrid.setRowCount(mGridSize + 1);
         mGrid.setColumnCount(mGridSize + 1);
+
+        int gridPadding = 18;
+        int textSize = 15;
+
+        switch(mSelectedDifficulty) {
+            case DIFFICULTY_EASY:
+                gridPadding *= 3;
+                textSize *= 1.6;
+                break;
+            case DIFFICULTY_MEDIUM:
+                gridPadding *= 2;
+                textSize *= 1.4;
+                break;
+
+            case DIFFICULTY_HARD:
+
+                break;
+        }
+
+        mGrid.setPadding(dpToPixels(gridPadding), 0, dpToPixels(gridPadding), 0);
+
 
         mToggles = new ToggleButton[mGridSize][mGridSize];
         mTvAnswersRow = new TextView[mGridSize];
@@ -128,7 +153,8 @@ public class GameActivity extends Activity {
             for (int col = 0; col < mGridSize; col++) {
                 ToggleButton toggle = new ToggleButton(this);
                 toggle.setLayoutParams(layoutParams);
-                toggle.setGravity(Gravity.FILL_HORIZONTAL);
+                toggle.setGravity(Gravity.CENTER);
+                toggle.setTextSize(textSize);
 
                 toggle.setTextOn("1");
                 toggle.setTextOff("0");
@@ -149,8 +175,10 @@ public class GameActivity extends Activity {
             }
 
             TextView textView = new TextView(this);
+            textView.setLayoutParams(layoutParams);
             textView.setText("" + mSumRow[row]);
-            textView.setGravity(Gravity.FILL_HORIZONTAL);
+            textView.setGravity(Gravity.CENTER);
+            textView.setTextSize(textSize);
 
             mTvAnswersRow[row] = textView;
             mGrid.addView(textView);
@@ -158,12 +186,19 @@ public class GameActivity extends Activity {
 
         for (int col = 0; col < mGridSize; col++) {
             TextView textView = new TextView(this);
+            textView.setLayoutParams(layoutParams);
             textView.setText("" + mSumCol[col]);
-            textView.setGravity(Gravity.FILL_HORIZONTAL);
+            textView.setGravity(Gravity.CENTER);
+            textView.setTextSize(textSize);
 
             mTvAnswersCol[col] = textView;
             mGrid.addView(textView);
         }
+    }
+
+    private int dpToPixels(int dp) {
+        float scale = getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
     }
 
     private void checkIfWon(int row, int col, boolean checked) {

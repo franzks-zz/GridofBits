@@ -27,7 +27,7 @@ package com.franzsarmiento.gridofbits;
 /**
  * Wrapper class for all static utility methods used in more than one class.
  */
-public class GridOfBitsUtils {
+public class Utils {
 
     public static String formatMillisToSeconds(long millis) {
         long deciseconds = millis / 100;

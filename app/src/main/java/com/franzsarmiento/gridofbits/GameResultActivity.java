@@ -53,8 +53,8 @@ public class GameResultActivity extends Activity {
         TextView tvNewBestTime = (TextView) findViewById(R.id.tvNewBestTime);
 
         tvYourTimeDifficulty.setText("Your total time for this " +
-                GridOfBitsUtils.getDifficultyInString(mSelectedDifficulty) + " round is:");
-        tvTotalTime.setText(GridOfBitsUtils.formatMillisToSeconds(totalTime));
+                Utils.getDifficultyInString(mSelectedDifficulty) + " round is:");
+        tvTotalTime.setText(Utils.formatMillisToSeconds(totalTime));
 
         if (!hasBeatenPreviousBestTimes(totalTime)) {
             tvNewBestTime.setVisibility(View.INVISIBLE);

@@ -70,7 +70,7 @@ public class BestTimesActivity extends Activity {
         for (int i = 0; i < textViewIds.length; i++) {
             TextView textView = (TextView) findViewById(textViewIds[i]);
             long time = pref.getLong(prefKey + PREF_KEY_SUFFIXES[i], 0);
-            String formattedTime = (i + 1) + ") " + GridOfBitsUtils.formatMillisToSeconds(time);
+            String formattedTime = (i + 1) + ") " + Utils.formatMillisToSeconds(time);
 
             if (time == 0) {
                 formattedTime = (i + 1) + ") -";

@@ -245,7 +245,7 @@ public class GameActivity extends Activity {
         final Runnable timeUpdater = new Runnable() {
             @Override
             public void run() {
-                mTvTimer.setText(GridOfBitsUtils.formatMillisToSeconds(
+                mTvTimer.setText(Utils.formatMillisToSeconds(
                         System.currentTimeMillis() - mStartTime));
                 handler.postDelayed(this, 100);
             }

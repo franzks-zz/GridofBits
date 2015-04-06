@@ -156,7 +156,7 @@ public class GameActivity extends Activity {
                 toggle.setGravity(Gravity.CENTER);
                 toggle.setTextSize(textSize);
 
-                toggle.setTextColor(getResources().getColor(R.color.bit_toggle_text_color));
+                toggle.setTextColor(getResources().getColor(R.color.default_light_text_color));
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     toggle.setBackgroundDrawable(
@@ -203,7 +203,7 @@ public class GameActivity extends Activity {
         textView.setText(text);
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(textSize);
-        textView.setTextColor(getResources().getColor(R.color.bit_toggle_text_color));
+        textView.setTextColor(getResources().getColor(R.color.default_light_text_color));
         return textView;
     }
 

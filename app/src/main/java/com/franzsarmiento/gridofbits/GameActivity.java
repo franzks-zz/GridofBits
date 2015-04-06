@@ -184,26 +184,27 @@ public class GameActivity extends Activity {
                 mGrid.addView(toggle);
             }
 
-            TextView textView = new TextView(this);
-            textView.setLayoutParams(layoutParams);
-            textView.setText("" + mSumRow[row]);
-            textView.setGravity(Gravity.CENTER);
-            textView.setTextSize(textSize);
-
+            TextView textView = createStyledTextView(layoutParams, "" + mSumRow[row], textSize);
             mTvAnswersRow[row] = textView;
             mGrid.addView(textView);
         }
 
         for (int col = 0; col < mGridSize; col++) {
-            TextView textView = new TextView(this);
-            textView.setLayoutParams(layoutParams);
-            textView.setText("" + mSumCol[col]);
-            textView.setGravity(Gravity.CENTER);
-            textView.setTextSize(textSize);
-
+            TextView textView = createStyledTextView(layoutParams, "" + mSumCol[col], textSize);
             mTvAnswersCol[col] = textView;
             mGrid.addView(textView);
         }
+    }
+
+    private TextView createStyledTextView(ViewGroup.LayoutParams layoutParams, String text, int textSize) {
+        TextView textView = new TextView(this);
+        textView.setLayoutParams(layoutParams);
+        textView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bit_sum_label));
+        textView.setText(text);
+        textView.setGravity(Gravity.CENTER);
+        textView.setTextSize(textSize);
+        textView.setTextColor(getResources().getColor(R.color.bit_toggle_text_color));
+        return textView;
     }
 
     private int dpToPixels(int dp) {

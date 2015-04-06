@@ -119,7 +119,11 @@ public class GameActivity extends Activity {
         mGrid.setColumnCount(mGridSize + 1);
 
         int gridPadding = 18;
-        int textSize = 15;
+        int textSize = 12;
+
+        if (getResources().getDisplayMetrics().density > 3) {
+            textSize += 4;
+        }
 
         switch(mSelectedDifficulty) {
             case DIFFICULTY_EASY:

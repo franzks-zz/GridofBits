@@ -26,6 +26,7 @@ package com.franzsarmiento.gridofbits;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -108,25 +109,66 @@ public class GameActivity extends Activity {
         }
     }
 
+    // Since the grid is built programmatically and not through XML, some dirty computations are
+    // needed to accommodate varying display densities. The board also needs to resize depending
+    // on the user's selected difficulty to avoid making small grids too spaced out and large grids
+    // too cluttered.
     private void buildGrid() {
         mGrid = (GridLayout) findViewById(R.id.grid);
         mGrid.setRowCount(mGridSize + 1);
         mGrid.setColumnCount(mGridSize + 1);
 
+        int gridPadding = 18;
+        int textSize = 12;
+
+        if (getResources().getDisplayMetrics().density > 3) {
+            textSize += 4;
+        }
+
+        switch(mSelectedDifficulty) {
+            case DIFFICULTY_EASY:
+                gridPadding *= 3;
+                textSize *= 1.6;
+                break;
+            case DIFFICULTY_MEDIUM:
+                gridPadding *= 2;
+                textSize *= 1.4;
+                break;
+
+            case DIFFICULTY_HARD:
+
+                break;
+        }
+
+        mGrid.setPadding(dpToPixels(gridPadding), 0, dpToPixels(gridPadding), 0);
+
         mToggles = new ToggleButton[mGridSize][mGridSize];
         mTvAnswersRow = new TextView[mGridSize];
         mTvAnswersCol = new TextView[mGridSize];
 
-        int lengthOfSides = getResources().getDisplayMetrics().widthPixels / (mGridSize + 1);
+        int gridLayoutPadding = mGrid.getPaddingLeft();
+        int lengthOfSides = (getResources().getDisplayMetrics().
+                widthPixels - (gridLayoutPadding * 2)) / (mGridSize + 1);
 
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+        ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(
                 lengthOfSides, lengthOfSides);
 
         for (int row = 0; row < mGridSize; row++) {
             for (int col = 0; col < mGridSize; col++) {
                 ToggleButton toggle = new ToggleButton(this);
                 toggle.setLayoutParams(layoutParams);
-                toggle.setGravity(Gravity.FILL_HORIZONTAL);
+                toggle.setGravity(Gravity.CENTER);
+                toggle.setTextSize(textSize);
+
+                toggle.setTextColor(getResources().getColor(R.color.default_light_text_color));
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    toggle.setBackgroundDrawable(
+                            getResources().getDrawable(R.drawable.bit_toggle_ripple));
+                } else {
+                    toggle.setBackgroundDrawable(
+                            getResources().getDrawable(R.drawable.bit_toggle_no_ripple));
+                }
 
                 toggle.setTextOn("1");
                 toggle.setTextOff("0");
@@ -146,22 +188,32 @@ public class GameActivity extends Activity {
                 mGrid.addView(toggle);
             }
 
-            TextView textView = new TextView(this);
-            textView.setText("" + mSumRow[row]);
-            textView.setGravity(Gravity.FILL_HORIZONTAL);
-
+            TextView textView = createStyledTextView(layoutParams, "" + mSumRow[row], textSize);
             mTvAnswersRow[row] = textView;
             mGrid.addView(textView);
         }
 
         for (int col = 0; col < mGridSize; col++) {
-            TextView textView = new TextView(this);
-            textView.setText("" + mSumCol[col]);
-            textView.setGravity(Gravity.FILL_HORIZONTAL);
-
+            TextView textView = createStyledTextView(layoutParams, "" + mSumCol[col], textSize);
             mTvAnswersCol[col] = textView;
             mGrid.addView(textView);
         }
+    }
+
+    private TextView createStyledTextView(ViewGroup.LayoutParams layoutParams, String text, int textSize) {
+        TextView textView = new TextView(this);
+        textView.setLayoutParams(layoutParams);
+        textView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bit_sum_label));
+        textView.setText(text);
+        textView.setGravity(Gravity.CENTER);
+        textView.setTextSize(textSize);
+        textView.setTextColor(getResources().getColor(R.color.default_light_text_color));
+        return textView;
+    }
+
+    private int dpToPixels(int dp) {
+        float scale = getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
     }
 
     private void checkIfWon(int row, int col, boolean checked) {

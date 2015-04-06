@@ -5,7 +5,7 @@
         android:right="@dimen/toggle_padding"
         android:bottom="@dimen/toggle_padding">
         <shape>
-            <solid android:color="#666" />
+            <solid android:color="@color/bit_sum_color" />
             <corners android:radius="@dimen/toggle_corner_radius" />
         </shape>
     </item>

@@ -8,7 +8,7 @@
     <style name="title_text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">100dp</item>
-        <item name="android:background">@color/bit_toggle_off_blue</item>
+        <item name="android:background">@color/base_color</item>
         <item name="android:text">@string/app_name</item>
         <item name="android:textColor">@color/default_light_text_color</item>
         <item name="android:textSize">30sp</item>
@@ -22,7 +22,7 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginBottom">10dp</item>
-        <item name="android:background">@color/bit_toggle_off_blue</item>
+        <item name="android:background">@color/base_color</item>
         <item name="android:textColor">@color/default_light_text_color</item>
     </style>
 

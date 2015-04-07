@@ -6,62 +6,37 @@
     <TextView style="@style/title_text"
         android:id="@+id/tvTitle" />
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:id="@+id/rgDifficulty"
-        android:layout_below="@id/tvTitle" >
+    <Button style="@style/btn_play"
+        android:id="@+id/btnPlayMedium"
+        android:text="@string/medium_6x6"
+        android:layout_centerVertical="true"
+        android:onClick="btnPlayMediumOnClick" />
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/easy_4x4"
-            android:id="@+id/rbEasy"
-            android:layout_gravity="center_horizontal" />
+    <Button style="@style/btn_play"
+        android:id="@+id/btnPlayEasy"
+        android:text="@string/easy_4x4"
+        android:layout_above="@id/btnPlayMedium"
+        android:onClick="btnPlayEasyOnClick" />
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/medium_6x6"
-            android:id="@+id/rbMedium"
-            android:layout_gravity="center_horizontal" />
+    <Button style="@style/btn_play"
+        android:id="@+id/btnPlayHard"
+        android:text="@string/hard_8x8"
+        android:layout_below="@id/btnPlayMedium"
+        android:onClick="btnPlayHardOnClick" />
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hard_8x8"
-            android:id="@+id/rbHard"
-            android:layout_gravity="center_horizontal" />
-    </RadioGroup>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/play"
-        android:id="@+id/btnPlay"
-        android:layout_below="@+id/rgDifficulty"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:onClick="btnPlayOnClick" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button style="@style/btn_play"
         android:text="@string/best_times"
         android:id="@+id/btnBestTimes"
-        android:layout_below="@+id/btnPlay"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/btnPlayHard"
         android:onClick="btnBestTimesOnClick" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/copyright"
+        android:textSize="12sp"
         android:id="@+id/tvCopyright"
-        android:layout_below="@+id/btnBestTimes"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

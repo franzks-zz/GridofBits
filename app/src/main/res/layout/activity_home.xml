@@ -3,8 +3,7 @@
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".HomeActivity">
 
-    <TextView style="@style/title_text"
-        android:id="@+id/tvTitle" />
+    <TextView style="@style/title_text" />
 
     <Button style="@style/btn_play"
         android:id="@+id/btnPlayMedium"
@@ -35,7 +34,6 @@
         android:layout_height="wrap_content"
         android:text="@string/copyright"
         android:textSize="12sp"
-        android:id="@+id/tvCopyright"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

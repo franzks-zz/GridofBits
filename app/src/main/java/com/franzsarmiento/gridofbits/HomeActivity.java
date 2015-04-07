@@ -25,9 +25,12 @@
 package com.franzsarmiento.gridofbits;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 
@@ -35,29 +38,53 @@ public class HomeActivity extends Activity {
 
     private RadioGroup mRgDifficulty;
 
+    private SharedPreferences mSharedPref;
+    private final static String LAST_SELECTED_DIFFICULTY_SHARED_PREF =
+            "com.franzsarmiento.gridofbits.last_selected_difficulty_shared_pref";
+    private final static String LAST_SELECTED_DIFFICULTY = "last_selected_difficulty";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         mRgDifficulty = (RadioGroup) findViewById(R.id.rgDifficulty);
+
+        mSharedPref = getSharedPreferences(
+                LAST_SELECTED_DIFFICULTY_SHARED_PREF, Context.MODE_PRIVATE);
+        switch(mSharedPref.getInt(LAST_SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_EASY)) {
+            case GameActivity.DIFFICULTY_EASY:
+                ((RadioButton)findViewById(R.id.rbEasy)).setChecked(true);
+                break;
+            case GameActivity.DIFFICULTY_MEDIUM:
+                ((RadioButton)findViewById(R.id.rbMedium)).setChecked(true);
+                break;
+            case GameActivity.DIFFICULTY_HARD:
+                ((RadioButton)findViewById(R.id.rbHard)).setChecked(true);
+                break;
+        }
     }
 
     public void btnPlayOnClick(View view) {
         Intent intent = new Intent(this, GameActivity.class);
+        SharedPreferences.Editor editor = mSharedPref.edit();
 
         switch (mRgDifficulty.getCheckedRadioButtonId()) {
             case R.id.rbEasy:
                 intent.putExtra(GameActivity.SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_EASY);
+                editor.putInt(LAST_SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_EASY);
                 break;
             case R.id.rbMedium:
                 intent.putExtra(GameActivity.SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_MEDIUM);
+                editor.putInt(LAST_SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_MEDIUM);
                 break;
             case R.id.rbHard:
                 intent.putExtra(GameActivity.SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_HARD);
+                editor.putInt(LAST_SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_HARD);
                 break;
         }
 
+        editor.commit();
         startActivity(intent);
     }
 

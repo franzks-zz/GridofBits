@@ -24,13 +24,18 @@
 
 package com.franzsarmiento.gridofbits;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
+import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.CompoundButton;
 import android.widget.GridLayout;
 import android.widget.TextView;
@@ -76,6 +81,19 @@ public class GameActivity extends Activity {
         generateAnswer();
         buildGrid();
         startTimer();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mGrid.getViewTreeObserver().addOnGlobalLayoutListener(
+                    new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    mGrid.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    revealGrid();
+                }
+            });
+        } else {
+            setAllGridChildrenToVisible();
+        }
     }
 
     private void generateAnswer() {
@@ -159,6 +177,7 @@ public class GameActivity extends Activity {
                 toggle.setLayoutParams(layoutParams);
                 toggle.setGravity(Gravity.CENTER);
                 toggle.setTextSize(textSize);
+                toggle.setVisibility(View.INVISIBLE);
 
                 toggle.setTextColor(getResources().getColor(R.color.default_light_text_color));
 
@@ -208,6 +227,7 @@ public class GameActivity extends Activity {
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(textSize);
         textView.setTextColor(getResources().getColor(R.color.default_light_text_color));
+        textView.setVisibility(View.INVISIBLE);
         return textView;
     }
 
@@ -273,5 +293,46 @@ public class GameActivity extends Activity {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    private void setAllGridChildrenToVisible() {
+        for (int row = 0; row < mToggles.length; row++) {
+            for (int col = 0; col < mToggles[0].length; col++) {
+                mToggles[row][col].setVisibility(View.VISIBLE);
+            }
+            mTvAnswersRow[row].setVisibility(View.VISIBLE);
+        }
+        for (int col = 0; col < mTvAnswersCol.length; col++) {
+            mTvAnswersCol[col].setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void revealGrid() {
+        for (int row = 0; row < mToggles.length; row++) {
+            for (int col = 0; col < mToggles[0].length; col++) {
+                setCircularReveal(mToggles[row][col]);
+            }
+            setCircularReveal(mTvAnswersRow[row]);
+        }
+        for (int col = 0; col < mTvAnswersCol.length; col++) {
+            setCircularReveal(mTvAnswersCol[col]);
+        }
+    }
+
+    private void setCircularReveal(final View view) {
+        int x = view.getWidth() / 2;
+        int y = view.getHeight() / 2;
+
+        Animator animator = ViewAnimationUtils.createCircularReveal(
+                view, x, y, 0, view.getWidth());
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationEnd(animation);
+                view.setVisibility(View.VISIBLE);
+            }
+        });
+        animator.setDuration(1000);
+        animator.start();
     }
 }

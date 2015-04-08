@@ -4,93 +4,56 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.franzsarmiento.gridofbits.BestTimesActivity">
 
-    <TextView style="@style/title_text"
-        android:id="@+id/tvTitle" />
+    <TextView style="@style/title_text" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hard"
-        android:id="@+id/tvHard"
-        android:layout_below="@id/tvTitle"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvHard1st"
-        android:layout_below="@+id/tvHard"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvHard2nd"
-        android:layout_below="@+id/tvHard1st"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvHard3rd"
-        android:layout_below="@+id/tvHard2nd"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView style="@style/best_times_text_view_title"
         android:text="@string/medium"
         android:id="@+id/tvMedium"
-        android:layout_below="@+id/tvHard3rd"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerVertical="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView style="@style/best_times_text_view_score"
+        android:id="@+id/tvHard3rd"
+        android:layout_above="@+id/tvMedium" />
+
+    <TextView style="@style/best_times_text_view_score"
+        android:id="@+id/tvHard2nd"
+        android:layout_above="@+id/tvHard3rd" />
+
+    <TextView style="@style/best_times_text_view_score"
+        android:id="@+id/tvHard1st"
+        android:layout_above="@+id/tvHard2nd" />
+
+    <TextView style="@style/best_times_text_view_title"
+        android:text="@string/hard"
+        android:id="@+id/tvHard"
+        android:layout_above="@id/tvHard1st" />
+
+    <TextView style="@style/best_times_text_view_score"
         android:id="@+id/tvMedium1st"
-        android:layout_below="@+id/tvMedium"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/tvMedium" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView style="@style/best_times_text_view_score"
         android:id="@+id/tvMedium2nd"
-        android:layout_below="@+id/tvMedium1st"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/tvMedium1st" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView style="@style/best_times_text_view_score"
         android:id="@+id/tvMedium3rd"
-        android:layout_below="@+id/tvMedium2nd"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/tvMedium2nd" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView style="@style/best_times_text_view_title"
         android:text="@string/easy"
         android:id="@+id/tvEasy"
-        android:layout_below="@+id/tvMedium3rd"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/tvMedium3rd" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView style="@style/best_times_text_view_score"
         android:id="@+id/tvEasy1st"
-        android:layout_below="@+id/tvEasy"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/tvEasy" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView style="@style/best_times_text_view_score"
         android:id="@+id/tvEasy2nd"
-        android:layout_below="@+id/tvEasy1st"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/tvEasy1st" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView style="@style/best_times_text_view_score"
         android:id="@+id/tvEasy3rd"
-        android:layout_below="@+id/tvEasy2nd"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/tvEasy2nd" />
 </RelativeLayout>

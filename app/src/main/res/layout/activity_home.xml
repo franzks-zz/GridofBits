@@ -5,25 +5,25 @@
 
     <TextView style="@style/title_text" />
 
-    <Button style="@style/btn_play"
+    <Button style="@style/default_base_button"
         android:id="@+id/btnPlayMedium"
         android:text="@string/medium_6x6"
         android:layout_centerVertical="true"
         android:onClick="btnPlayMediumOnClick" />
 
-    <Button style="@style/btn_play"
+    <Button style="@style/default_base_button"
         android:id="@+id/btnPlayEasy"
         android:text="@string/easy_4x4"
         android:layout_above="@id/btnPlayMedium"
         android:onClick="btnPlayEasyOnClick" />
 
-    <Button style="@style/btn_play"
+    <Button style="@style/default_base_button"
         android:id="@+id/btnPlayHard"
         android:text="@string/hard_8x8"
         android:layout_below="@id/btnPlayMedium"
         android:onClick="btnPlayHardOnClick" />
 
-    <Button style="@style/btn_play"
+    <Button style="@style/default_base_button"
         android:text="@string/best_times"
         android:id="@+id/btnBestTimes"
         android:layout_below="@+id/btnPlayHard"

@@ -20,7 +20,7 @@
             android:text="@string/congratulations"
             android:textSize="30sp"
             android:id="@+id/tvCongratulations"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="60dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
             android:text="@string/new_best_time"
             android:gravity="center"
             android:id="@+id/tvNewBestTime"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="40dp"/>
 
         <Button style="@style/default_base_button"
             android:text="@string/play_again"

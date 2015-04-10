@@ -8,52 +8,59 @@
         android:id="@+id/tvTitle"
         android:layout_alignParentTop="true" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tvTitle"
-        android:gravity="center"
-        android:orientation="vertical" >
+        android:layout_below="@id/tvTitle">
 
-        <TextView style="@style/best_times_text_view_title"
-            android:text="@string/hard"
-            android:id="@+id/tvHard" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:orientation="vertical" >
 
-        <TextView style="@style/best_times_text_view_score"
-            android:id="@+id/tvHard1st" />
+            <TextView style="@style/best_times_text_view_title"
+                android:text="@string/hard"
+                android:id="@+id/tvHard" />
 
-        <TextView style="@style/best_times_text_view_score"
-            android:id="@+id/tvHard2nd" />
+            <TextView style="@style/best_times_text_view_score"
+                android:id="@+id/tvHard1st" />
 
-        <TextView style="@style/best_times_text_view_score"
-            android:id="@+id/tvHard3rd"/>
+            <TextView style="@style/best_times_text_view_score"
+                android:id="@+id/tvHard2nd" />
 
-        <TextView style="@style/best_times_text_view_title"
-            android:text="@string/medium"
-            android:id="@+id/tvMedium" />
+            <TextView style="@style/best_times_text_view_score"
+                android:id="@+id/tvHard3rd"/>
 
-        <TextView style="@style/best_times_text_view_score"
-            android:id="@+id/tvMedium1st" />
+            <TextView style="@style/best_times_text_view_title"
+                android:text="@string/medium"
+                android:id="@+id/tvMedium" />
 
-        <TextView style="@style/best_times_text_view_score"
-            android:id="@+id/tvMedium2nd" />
+            <TextView style="@style/best_times_text_view_score"
+                android:id="@+id/tvMedium1st" />
 
-        <TextView style="@style/best_times_text_view_score"
-            android:id="@+id/tvMedium3rd" />
+            <TextView style="@style/best_times_text_view_score"
+                android:id="@+id/tvMedium2nd" />
 
-        <TextView style="@style/best_times_text_view_title"
-            android:text="@string/easy"
-            android:id="@+id/tvEasy"/>
+            <TextView style="@style/best_times_text_view_score"
+                android:id="@+id/tvMedium3rd" />
 
-        <TextView style="@style/best_times_text_view_score"
-            android:id="@+id/tvEasy1st" />
+            <TextView style="@style/best_times_text_view_title"
+                android:text="@string/easy"
+                android:id="@+id/tvEasy"/>
 
-        <TextView style="@style/best_times_text_view_score"
-            android:id="@+id/tvEasy2nd" />
+            <TextView style="@style/best_times_text_view_score"
+                android:id="@+id/tvEasy1st" />
 
-        <TextView style="@style/best_times_text_view_score"
-            android:id="@+id/tvEasy3rd" />
+            <TextView style="@style/best_times_text_view_score"
+                android:id="@+id/tvEasy2nd" />
 
-    </LinearLayout>
+            <TextView style="@style/best_times_text_view_score"
+                android:id="@+id/tvEasy3rd" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

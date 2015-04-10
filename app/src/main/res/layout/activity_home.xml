@@ -29,6 +29,12 @@
         android:layout_below="@+id/btnPlayHard"
         android:onClick="btnBestTimesOnClick" />
 
+    <Button style="@style/default_base_button"
+        android:text="@string/how_to_play"
+        android:id="@+id/btnHowToPlay"
+        android:layout_below="@+id/btnBestTimes"
+        android:onClick="btnHowToPlayOnClick" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

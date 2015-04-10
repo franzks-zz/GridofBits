@@ -64,6 +64,12 @@ public class HomeActivity extends Activity {
         startActivity(new Intent(this, BestTimesActivity.class));
     }
 
+    public void btnHowToPlayOnClick(View view) {
+        HowToPlayDialogFragment dialogFragment = new HowToPlayDialogFragment();
+        dialogFragment.show(getFragmentManager(),
+                getResources().getString(R.string.how_to_play));
+    }
+
     // Return to home screen
     @Override
     public void onBackPressed() {

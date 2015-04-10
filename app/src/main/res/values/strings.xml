@@ -5,6 +5,7 @@
     <string name="hard_8x8">Hard (8x8)</string>
     <string name="play">Play!</string>
     <string name="best_times">Best Times</string>
+    <string name="how_to_play">How To Play</string>
     <string name="copyright">Copyright &#169; 2015 Franz Sarmiento.</string>
 
     <string name="title_activity_game">Game Screen</string>

@@ -20,8 +20,8 @@
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
         <item name="android:background">@color/base_color</item>
         <item name="android:textColor">@color/default_light_text_color</item>
     </style>
@@ -29,19 +29,19 @@
     <style name="best_times_text_view">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerHorizontal">true</item>
-        <item name="android:layout_margin">3dp</item>
+        <item name="android:layout_margin">8dp</item>
     </style>
 
     <style name="best_times_text_view_title" parent="best_times_text_view">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
     </style>
 
     <style name="best_times_text_view_score" parent="best_times_text_view">
         <item name="android:layout_width">150dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:gravity">left|center_vertical</item>
     </style>
 

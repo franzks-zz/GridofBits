@@ -3,37 +3,44 @@
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".HomeActivity">
 
-    <TextView style="@style/title_text" />
+    <TextView style="@style/title_text"
+        android:id="@+id/tvTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-    <Button style="@style/default_base_button"
-        android:id="@+id/btnPlayHard"
-        android:text="@string/hard_8x8"
-        android:layout_centerVertical="true"
-        android:onClick="btnPlayHardOnClick" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvTitle"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <Button style="@style/default_base_button"
-        android:id="@+id/btnPlayMedium"
-        android:text="@string/medium_6x6"
-        android:layout_above="@id/btnPlayHard"
-        android:onClick="btnPlayMediumOnClick" />
+        <Button style="@style/default_base_button"
+            android:id="@+id/btnPlayEasy"
+            android:text="@string/easy_4x4"
+            android:onClick="btnPlayEasyOnClick" />
 
-    <Button style="@style/default_base_button"
-        android:id="@+id/btnPlayEasy"
-        android:text="@string/easy_4x4"
-        android:layout_above="@id/btnPlayMedium"
-        android:onClick="btnPlayEasyOnClick" />
+        <Button style="@style/default_base_button"
+            android:id="@+id/btnPlayMedium"
+            android:text="@string/medium_6x6"
+            android:onClick="btnPlayMediumOnClick" />
 
-    <Button style="@style/default_base_button"
-        android:text="@string/best_times"
-        android:id="@+id/btnBestTimes"
-        android:layout_below="@+id/btnPlayHard"
-        android:onClick="btnBestTimesOnClick" />
+        <Button style="@style/default_base_button"
+            android:id="@+id/btnPlayHard"
+            android:text="@string/hard_8x8"
+            android:onClick="btnPlayHardOnClick" />
 
-    <Button style="@style/default_base_button"
-        android:text="@string/how_to_play"
-        android:id="@+id/btnHowToPlay"
-        android:layout_below="@+id/btnBestTimes"
-        android:onClick="btnHowToPlayOnClick" />
+        <Button style="@style/default_base_button"
+            android:text="@string/best_times"
+            android:id="@+id/btnBestTimes"
+            android:onClick="btnBestTimesOnClick" />
+
+        <Button style="@style/default_base_button"
+            android:text="@string/how_to_play"
+            android:id="@+id/btnHowToPlay"
+            android:onClick="btnHowToPlayOnClick" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"

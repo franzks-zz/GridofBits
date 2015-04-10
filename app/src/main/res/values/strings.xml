@@ -28,7 +28,7 @@
     <string name="how_to_play_rows">
         The left-most box represents the most significant bit, while the right-most box is the least significant bit or "1".
     </string>
-    <string name="how_to_play_cols_title">Cols:</string>
+    <string name="how_to_play_cols_title">Columns:</string>
     <string name="how_to_play_cols">
         The top-most box is the most significant bit, while the bottom-most box is the least significant bit or "1".
     </string>
@@ -36,7 +36,7 @@
         For example, if we have found the decimal number "10" to the right of a row of bits, those same bits should look like this:
     </string>
     <string name="how_to_play_cols_example">
-        On the other hand, if we found "10" under a column of bits, the bits should be toggled as follows:
+        For example, if we found "10" under a column of bits, the bits should be toggled as follows:
     </string>
     <string name="how_to_play_example_explanation">
         This is because the decimal values of each bit are 8-4-2-1 (8 is the most significant bit, while 1 is the least significant) and 10 is equal to 8 + 2, so we only toggle the bits representing 8 and 2, resulting to the binary number 1010.

@@ -28,6 +28,8 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -71,6 +73,8 @@ public class GameActivity extends Activity {
 
     private TextView mTvTimer;
 
+    private MediaPlayer mPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +82,10 @@ public class GameActivity extends Activity {
 
         mSelectedDifficulty = getIntent().getIntExtra(SELECTED_DIFFICULTY, DIFFICULTY_EASY);
         mGridSize = SIZES[mSelectedDifficulty - 1];
+
+        mPlayer = MediaPlayer.create(this, R.raw.click);
+        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
         generateAnswer();
         buildGrid();
         startTimer();
@@ -199,6 +207,7 @@ public class GameActivity extends Activity {
                 toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                        mPlayer.start();
                         checkIfWon(final_row, final_col, checked);
                     }
                 });

@@ -52,4 +52,13 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="how_to_play_fake_toggle">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/default_light_text_color</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_margin">3dp</item>
+    </style>
+
 </resources>

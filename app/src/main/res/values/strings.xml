@@ -44,4 +44,7 @@
     <string name="how_to_play_winning_condition">
         You win when the correct bits have been toggled for the entire grid.
     </string>
+    <string name="one">1</string>
+    <string name="zero">0</string>
+    <string name="ten">10</string>
 </resources>

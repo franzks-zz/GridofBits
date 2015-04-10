@@ -20,4 +20,28 @@
     <string name="easy">Easy</string>
     <string name="medium">Medium</string>
     <string name="hard">Hard</string>
+
+    <string name="how_to_play_intro">
+        Hello and thanks for trying out Grid of Bits! This game is perfect for practicing the conversion of numbers from decimal to binary. To win, you must match the decimal numbers found at the end of each row and column (gray boxes) by toggling the correct bits (blue boxes). You must toggle the bits such that the resulting binary number is equal to the decimal number.
+    </string>
+    <string name="how_to_play_rows_title">Rows:</string>
+    <string name="how_to_play_rows">
+        The left-most box represents the most significant bit, while the right-most box is the least significant bit or "1".
+    </string>
+    <string name="how_to_play_cols_title">Cols:</string>
+    <string name="how_to_play_cols">
+        The top-most box is the most significant bit, while the bottom-most box is the least significant bit or "1".
+    </string>
+    <string name="how_to_play_rows_example">
+        For example, if we have the decimal number "10", the row to its left should look like this:
+    </string>
+    <string name="how_to_play_cols_example">
+        While the column above it should read:
+    </string>
+    <string name="how_to_play_example_explanation">
+        This is because the decimal values of each bit are 8-4-2-1 (8 is the most significant bit, while 1 is the least significant) and 10 is equal to 8 + 2, so we only toggle the bits representing 8 and 2, resulting to the binary number 1010.
+    </string>
+    <string name="how_to_play_winning_condition">
+        You win when the correct bits have been toggled for the entire grid.
+    </string>
 </resources>

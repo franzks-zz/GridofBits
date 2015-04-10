@@ -1,77 +1,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".HomeActivity">
 
-    <TextView
-        android:text="@string/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:id="@+id/tvTitle" />
+    <TextView style="@style/title_text" />
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:id="@+id/rgDifficulty">
+    <Button style="@style/default_base_button"
+        android:id="@+id/btnPlayHard"
+        android:text="@string/hard_8x8"
+        android:layout_centerVertical="true"
+        android:onClick="btnPlayHardOnClick" />
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/easy_4x4"
-            android:id="@+id/rbEasy"
-            android:layout_gravity="center_horizontal"
-            android:checked="true"/>
+    <Button style="@style/default_base_button"
+        android:id="@+id/btnPlayMedium"
+        android:text="@string/medium_6x6"
+        android:layout_above="@id/btnPlayHard"
+        android:onClick="btnPlayMediumOnClick" />
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/medium_6x6"
-            android:id="@+id/rbMedium"
-            android:layout_gravity="center_horizontal" />
+    <Button style="@style/default_base_button"
+        android:id="@+id/btnPlayEasy"
+        android:text="@string/easy_4x4"
+        android:layout_above="@id/btnPlayMedium"
+        android:onClick="btnPlayEasyOnClick" />
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hard_8x8"
-            android:id="@+id/rbHard"
-            android:layout_gravity="center_horizontal" />
-    </RadioGroup>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/play"
-        android:id="@+id/btnPlay"
-        android:layout_below="@+id/rgDifficulty"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:onClick="btnPlayOnClick" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button style="@style/default_base_button"
         android:text="@string/best_times"
         android:id="@+id/btnBestTimes"
-        android:layout_below="@+id/btnPlay"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_below="@+id/btnPlayHard"
         android:onClick="btnBestTimesOnClick" />
+
+    <Button style="@style/default_base_button"
+        android:text="@string/how_to_play"
+        android:id="@+id/btnHowToPlay"
+        android:layout_below="@+id/btnBestTimes"
+        android:onClick="btnHowToPlayOnClick" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/copyright"
-        android:id="@+id/tvCopyright"
-        android:layout_below="@+id/btnBestTimes"
+        android:textSize="12sp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

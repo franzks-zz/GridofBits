@@ -25,44 +25,49 @@
 package com.franzsarmiento.gridofbits;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 
 public class HomeActivity extends Activity {
 
-    private RadioGroup mRgDifficulty;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        mRgDifficulty = (RadioGroup) findViewById(R.id.rgDifficulty);
     }
 
-    public void btnPlayOnClick(View view) {
+    public void btnPlayEasyOnClick(View view) {
         Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(GameActivity.SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_EASY);
+        startActivity(intent);
+    }
 
-        switch (mRgDifficulty.getCheckedRadioButtonId()) {
-            case R.id.rbEasy:
-                intent.putExtra(GameActivity.SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_EASY);
-                break;
-            case R.id.rbMedium:
-                intent.putExtra(GameActivity.SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_MEDIUM);
-                break;
-            case R.id.rbHard:
-                intent.putExtra(GameActivity.SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_HARD);
-                break;
-        }
+    public void btnPlayMediumOnClick(View view) {
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(GameActivity.SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_MEDIUM);
+        startActivity(intent);
+    }
 
+    public void btnPlayHardOnClick(View view) {
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(GameActivity.SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_HARD);
         startActivity(intent);
     }
 
     public void btnBestTimesOnClick(View view) {
         startActivity(new Intent(this, BestTimesActivity.class));
+    }
+
+    public void btnHowToPlayOnClick(View view) {
+        HowToPlayDialogFragment dialogFragment = new HowToPlayDialogFragment();
+        dialogFragment.show(getFragmentManager(),
+                getResources().getString(R.string.how_to_play));
     }
 
     // Return to home screen

@@ -9,7 +9,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".HomeActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,15 +19,18 @@
         </activity>
         <activity
             android:name=".GameActivity"
-            android:label="@string/title_activity_game" >
+            android:label="@string/title_activity_game"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".GameResultActivity"
-            android:label="@string/title_activity_game_result" >
+            android:label="@string/title_activity_game_result"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".BestTimesActivity"
-            android:label="@string/title_activity_best_times" >
+            android:label="@string/title_activity_best_times"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

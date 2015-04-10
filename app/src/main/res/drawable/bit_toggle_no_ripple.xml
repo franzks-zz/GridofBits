@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:left="@dimen/toggle_padding"
+        android:top="@dimen/toggle_padding"
+        android:right="@dimen/toggle_padding"
+        android:bottom="@dimen/toggle_padding">
+        <selector>
+            <item android:state_checked="true">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/highlight_color" />
+                    <corners android:radius="@dimen/toggle_corner_radius" />
+                </shape>
+            </item>
+            <item android:state_checked="false">
+                <shape android:shape="rectangle">
+                    <solid android:color="@color/base_color" />
+                    <corners android:radius="@dimen/toggle_corner_radius" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</layer-list>

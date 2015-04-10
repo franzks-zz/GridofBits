@@ -4,52 +4,52 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.franzsarmiento.gridofbits.GameResultActivity">
 
-    <TextView style="@style/title_text" />
+    <TextView style="@style/title_text"
+        android:id="@+id/tvTitle" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:id="@+id/tvTotalTime"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/your_time"
-        android:id="@+id/tvYourTimeDifficulty"
-        android:layout_above="@+id/tvTotalTime"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="7dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/congratulations"
-        android:textSize="30sp"
-        android:id="@+id/tvCongratulations"
-        android:layout_above="@id/tvYourTimeDifficulty"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"/>
-
-    <TextView
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:text="@string/new_best_time"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvTitle"
         android:gravity="center"
-        android:id="@+id/tvNewBestTime"
-        android:layout_below="@+id/tvTotalTime"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"/>
+        android:orientation="vertical">
 
-    <Button style="@style/default_base_button"
-        android:text="@string/play_again"
-        android:id="@+id/btnPlayAgain"
-        android:layout_below="@+id/tvNewBestTime"
-        android:onClick="btnPlayAgainOnClick" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/congratulations"
+            android:textSize="30sp"
+            android:id="@+id/tvCongratulations"
+            android:layout_marginBottom="25dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_time"
+            android:id="@+id/tvYourTimeDifficulty"
+            android:layout_marginBottom="7dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:id="@+id/tvTotalTime"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="@string/new_best_time"
+            android:gravity="center"
+            android:id="@+id/tvNewBestTime"
+            android:layout_marginBottom="20dp"/>
+
+        <Button style="@style/default_base_button"
+            android:text="@string/play_again"
+            android:id="@+id/btnPlayAgain"
+            android:onClick="btnPlayAgainOnClick" />
+
+    </LinearLayout>
 
 </RelativeLayout>

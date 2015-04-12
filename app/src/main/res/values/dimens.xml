@@ -3,5 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="toggle_padding">3dp</dimen>
-    <dimen name="toggle_corner_radius">2dp</dimen>
+    <dimen name="toggle_corner_radius">5dp</dimen>
 </resources>

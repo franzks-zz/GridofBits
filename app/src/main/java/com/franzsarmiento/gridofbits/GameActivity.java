@@ -28,7 +28,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -232,21 +231,11 @@ public class GameActivity extends Activity {
         textView.setTextColor(getResources().getColor(R.color.default_light_text_color));
         textView.setVisibility(View.INVISIBLE);
 
-        final Drawable defaultDrawable = getResources().getDrawable(R.drawable.bit_sum_label);
-        final Drawable toggledDrawable = getResources().getDrawable(R.drawable.bit_sum_label_toggled);
-
-        textView.setBackgroundDrawable(defaultDrawable);
-
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(view.getBackground() == defaultDrawable) {
-                    view.setBackgroundDrawable(toggledDrawable);
-                } else if (view.getBackground() == toggledDrawable) {
-                    view.setBackgroundDrawable(defaultDrawable);
-                }
-            }
-        });
+        if (text.equals("0")) {
+            textView.setBackgroundResource(R.drawable.bit_sum_label_toggled);
+        } else {
+            textView.setBackgroundResource(R.drawable.bit_sum_label);
+        }
 
         return textView;
     }
@@ -257,6 +246,34 @@ public class GameActivity extends Activity {
     }
 
     private void checkIfWon(int row, int col, boolean checked) {
+        boolean isRowCorrect = true;
+        for (int c = 0; c < mAnswer[row].length; c++) {
+            if (mToggles[row][c].isChecked() != mAnswer[row][c]) {
+                isRowCorrect = false;
+                break;
+            }
+        }
+
+        if (isRowCorrect) {
+            mTvAnswersRow[row].setBackgroundResource(R.drawable.bit_sum_label_toggled);
+        } else {
+            mTvAnswersRow[row].setBackgroundResource(R.drawable.bit_sum_label);
+        }
+
+        boolean isColCorrect = true;
+        for (int r = 0; r < mAnswer.length; r++) {
+            if (mToggles[r][col].isChecked() != mAnswer[r][col]) {
+                isColCorrect = false;
+                break;
+            }
+        }
+
+        if (isColCorrect) {
+            mTvAnswersCol[col].setBackgroundResource(R.drawable.bit_sum_label_toggled);
+        } else {
+            mTvAnswersCol[col].setBackgroundResource(R.drawable.bit_sum_label);
+        }
+
         if (checked == mAnswer[row][col]) {
             mCurrentNumOfCorrectOnes += 1;
         } else {

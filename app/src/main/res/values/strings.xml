@@ -40,10 +40,10 @@
         For example, if we found "10" under a column of bits, the bits should be toggled as follows:
     </string>
     <string name="how_to_play_example_explanation">
-        This is because the decimal values of each bit are 8-4-2-1 (8 is the most significant bit, while 1 is the least significant) and 10 is equal to 8 + 2, so we only toggle the bits representing 8 and 2, resulting to the binary number 1010.
+        This is because the decimal values of each bit are 8-4-2-1 (8 is the most significant bit, while 1 is the least significant) and 10 is equal to 8 + 2, so we only toggle the bits representing 8 and 2, resulting to the binary number 1010. 8-4-2-1 is for the 4x4 grid, but since each digit in a binary number is simply double the previous one (each digit is a power of 2), this means a 6x6 grid has the following values for each row and column: 32-16-8-4-2-1. Likewise for the 8x8 grid: 128-64-32-16-8-4-2-1.
     </string>
     <string name="how_to_play_winning_condition">
-        You win when the correct bits have been toggled for the entire grid.
+        You win when the correct bits have been toggled for the entire grid!
     </string>
     <string name="one">1</string>
     <string name="zero">0</string>

@@ -145,20 +145,13 @@ public class GameActivity extends Activity {
         mGrid.setColumnCount(mGridSize + 1);
 
         int gridPadding = 18;
-        int textSize = 12;
-
-        if (getResources().getDisplayMetrics().density > 3) {
-            textSize += 4;
-        }
 
         switch(mSelectedDifficulty) {
             case DIFFICULTY_EASY:
                 gridPadding *= 3;
-                textSize *= 1.6;
                 break;
             case DIFFICULTY_MEDIUM:
                 gridPadding *= 2;
-                textSize *= 1.4;
                 break;
 
             case DIFFICULTY_HARD:
@@ -175,6 +168,7 @@ public class GameActivity extends Activity {
         int gridLayoutPadding = mGrid.getPaddingLeft();
         int lengthOfSides = (getResources().getDisplayMetrics().
                 widthPixels - (gridLayoutPadding * 2)) / (mGridSize + 1);
+        float textSize = 20 * (float) lengthOfSides / dpToPixels(50);
 
         ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(
                 lengthOfSides, lengthOfSides);
@@ -228,15 +222,21 @@ public class GameActivity extends Activity {
         }
     }
 
-    private TextView createStyledTextView(ViewGroup.LayoutParams layoutParams, String text, int textSize) {
+    private TextView createStyledTextView(ViewGroup.LayoutParams layoutParams, String text, float textSize) {
         TextView textView = new TextView(this);
         textView.setLayoutParams(layoutParams);
-        textView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bit_sum_label));
         textView.setText(text);
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(textSize);
         textView.setTextColor(getResources().getColor(R.color.default_light_text_color));
         textView.setVisibility(View.INVISIBLE);
+
+        if (text.equals("0")) {
+            textView.setBackgroundResource(R.drawable.bit_sum_label_toggled);
+        } else {
+            textView.setBackgroundResource(R.drawable.bit_sum_label);
+        }
+
         return textView;
     }
 
@@ -246,6 +246,34 @@ public class GameActivity extends Activity {
     }
 
     private void checkIfWon(int row, int col, boolean checked) {
+        boolean isRowCorrect = true;
+        for (int c = 0; c < mAnswer[row].length; c++) {
+            if (mToggles[row][c].isChecked() != mAnswer[row][c]) {
+                isRowCorrect = false;
+                break;
+            }
+        }
+
+        if (isRowCorrect) {
+            mTvAnswersRow[row].setBackgroundResource(R.drawable.bit_sum_label_toggled);
+        } else {
+            mTvAnswersRow[row].setBackgroundResource(R.drawable.bit_sum_label);
+        }
+
+        boolean isColCorrect = true;
+        for (int r = 0; r < mAnswer.length; r++) {
+            if (mToggles[r][col].isChecked() != mAnswer[r][col]) {
+                isColCorrect = false;
+                break;
+            }
+        }
+
+        if (isColCorrect) {
+            mTvAnswersCol[col].setBackgroundResource(R.drawable.bit_sum_label_toggled);
+        } else {
+            mTvAnswersCol[col].setBackgroundResource(R.drawable.bit_sum_label);
+        }
+
         if (checked == mAnswer[row][col]) {
             mCurrentNumOfCorrectOnes += 1;
         } else {
@@ -264,16 +292,35 @@ public class GameActivity extends Activity {
         startActivity(intent);
     }
 
+    public void btnSurrenderOnClick(View view) {
+        mTimerHandler.removeCallbacksAndMessages(null);
+
+        for (int row = 0; row < mToggles.length; row++) {
+            for (int col = 0; col < mToggles[0].length; col++) {
+                mToggles[row][col].setOnCheckedChangeListener(null);
+                mToggles[row][col].setChecked(mAnswer[row][col]);
+                mToggles[row][col].setEnabled(false);
+            }
+            mTvAnswersRow[row].setBackgroundResource(R.drawable.bit_sum_label_toggled);
+        }
+        for (int col = 0; col < mToggles[0].length; col++) {
+            mTvAnswersCol[col].setBackgroundResource(R.drawable.bit_sum_label_toggled);
+        }
+    }
+
+    private Handler mTimerHandler;
     private long mStartTime;
     private long mPauseTime;
 
     private void startTimer() {
         mTvTimer = (TextView) findViewById(R.id.tvTimer);
         final Handler handler = new Handler();
+        mTimerHandler = handler;
 
         final Runnable timeUpdater = new Runnable() {
             @Override
             public void run() {
+
                 mTvTimer.setText(Utils.formatMillisToSeconds(
                         System.currentTimeMillis() - mStartTime));
                 handler.postDelayed(this, 100);

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:left="@dimen/toggle_padding"
+        android:top="@dimen/toggle_padding"
+        android:right="@dimen/toggle_padding"
+        android:bottom="@dimen/toggle_padding">
+        <shape>
+            <solid android:color="@color/bit_sum_toggled_color" />
+            <corners android:radius="@dimen/toggle_corner_radius" />
+        </shape>
+    </item>
+</layer-list>

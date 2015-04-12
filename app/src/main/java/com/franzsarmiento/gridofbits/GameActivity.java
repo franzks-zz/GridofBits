@@ -145,20 +145,13 @@ public class GameActivity extends Activity {
         mGrid.setColumnCount(mGridSize + 1);
 
         int gridPadding = 18;
-        int textSize = 12;
-
-        if (getResources().getDisplayMetrics().density > 3) {
-            textSize += 4;
-        }
 
         switch(mSelectedDifficulty) {
             case DIFFICULTY_EASY:
                 gridPadding *= 3;
-                textSize *= 1.6;
                 break;
             case DIFFICULTY_MEDIUM:
                 gridPadding *= 2;
-                textSize *= 1.4;
                 break;
 
             case DIFFICULTY_HARD:
@@ -175,6 +168,7 @@ public class GameActivity extends Activity {
         int gridLayoutPadding = mGrid.getPaddingLeft();
         int lengthOfSides = (getResources().getDisplayMetrics().
                 widthPixels - (gridLayoutPadding * 2)) / (mGridSize + 1);
+        float textSize = 20 * (float) lengthOfSides / dpToPixels(50);
 
         ViewGroup.MarginLayoutParams layoutParams = new ViewGroup.MarginLayoutParams(
                 lengthOfSides, lengthOfSides);
@@ -228,7 +222,7 @@ public class GameActivity extends Activity {
         }
     }
 
-    private TextView createStyledTextView(ViewGroup.LayoutParams layoutParams, String text, int textSize) {
+    private TextView createStyledTextView(ViewGroup.LayoutParams layoutParams, String text, float textSize) {
         TextView textView = new TextView(this);
         textView.setLayoutParams(layoutParams);
         textView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bit_sum_label));

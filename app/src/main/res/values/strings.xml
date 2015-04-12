@@ -9,6 +9,7 @@
     <string name="copyright">Copyright &#169; 2015 Franz Sarmiento.</string>
 
     <string name="title_activity_game">Game Screen</string>
+    <string name="surrender">Surrender!</string>
 
     <string name="title_activity_game_result">Game Result Screen</string>
     <string name="congratulations">Congratulations!</string>

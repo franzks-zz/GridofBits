@@ -258,16 +258,31 @@ public class GameActivity extends Activity {
         startActivity(intent);
     }
 
+    public void btnSurrenderOnClick(View view) {
+        mTimerHandler.removeCallbacksAndMessages(null);
+
+        for (int row = 0; row < mToggles.length; row++) {
+            for (int col = 0; col < mToggles[0].length; col++) {
+                mToggles[row][col].setOnCheckedChangeListener(null);
+                mToggles[row][col].setChecked(mAnswer[row][col]);
+                mToggles[row][col].setEnabled(false);
+            }
+        }
+    }
+
+    private Handler mTimerHandler;
     private long mStartTime;
     private long mPauseTime;
 
     private void startTimer() {
         mTvTimer = (TextView) findViewById(R.id.tvTimer);
         final Handler handler = new Handler();
+        mTimerHandler = handler;
 
         final Runnable timeUpdater = new Runnable() {
             @Override
             public void run() {
+
                 mTvTimer.setText(Utils.formatMillisToSeconds(
                         System.currentTimeMillis() - mStartTime));
                 handler.postDelayed(this, 100);

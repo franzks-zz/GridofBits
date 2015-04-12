@@ -28,6 +28,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -225,12 +226,28 @@ public class GameActivity extends Activity {
     private TextView createStyledTextView(ViewGroup.LayoutParams layoutParams, String text, float textSize) {
         TextView textView = new TextView(this);
         textView.setLayoutParams(layoutParams);
-        textView.setBackgroundDrawable(getResources().getDrawable(R.drawable.bit_sum_label));
         textView.setText(text);
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(textSize);
         textView.setTextColor(getResources().getColor(R.color.default_light_text_color));
         textView.setVisibility(View.INVISIBLE);
+
+        final Drawable defaultDrawable = getResources().getDrawable(R.drawable.bit_sum_label);
+        final Drawable toggledDrawable = getResources().getDrawable(R.drawable.bit_sum_label_toggled);
+
+        textView.setBackgroundDrawable(defaultDrawable);
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(view.getBackground() == defaultDrawable) {
+                    view.setBackgroundDrawable(toggledDrawable);
+                } else if (view.getBackground() == toggledDrawable) {
+                    view.setBackgroundDrawable(defaultDrawable);
+                }
+            }
+        });
+
         return textView;
     }
 

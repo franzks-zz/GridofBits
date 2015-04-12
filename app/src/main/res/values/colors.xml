@@ -6,4 +6,5 @@
     <item name="highlight_color" type="color">#FF9800</item>
     <item name="ripple_color" type="color">#666</item>
     <item name="bit_sum_color" type="color">#757575</item>
+    <item name="bit_sum_toggled_color" type="color">#4CAF50</item>
 </resources>

@@ -102,6 +102,9 @@
             android:text="@string/how_to_play_example_explanation" />
 
         <TextView style="@style/how_to_play_text_view"
+            android:text="@string/how_to_play_toggle_sums" />
+
+        <TextView style="@style/how_to_play_text_view"
             android:text="@string/how_to_play_winning_condition" />
 
     </LinearLayout>

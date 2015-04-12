@@ -301,6 +301,10 @@ public class GameActivity extends Activity {
                 mToggles[row][col].setChecked(mAnswer[row][col]);
                 mToggles[row][col].setEnabled(false);
             }
+            mTvAnswersRow[row].setBackgroundResource(R.drawable.bit_sum_label_toggled);
+        }
+        for (int col = 0; col < mToggles[0].length; col++) {
+            mTvAnswersCol[col].setBackgroundResource(R.drawable.bit_sum_label_toggled);
         }
     }
 

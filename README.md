@@ -2,7 +2,7 @@
 
 This is a very simple Android game that's made for practicing mentally converting numbers from decimal to binary.
 
-[![Get it on Google Play](http://www.android.com/images/brand/get_it_on_play_logo_small.png)](https://play.google.com/store/apps/details?id=com.franzsarmiento.gridofbits)
+[![Get it on Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=com.franzsarmiento.gridofbits)
 
 ### Contributing
 1. Fork it ( https://github.com/franzks/GridofBits/fork )

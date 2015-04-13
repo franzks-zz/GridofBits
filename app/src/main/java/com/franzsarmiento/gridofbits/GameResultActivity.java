@@ -32,8 +32,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.facebook.share.widget.ShareDialog;
 
 public class GameResultActivity extends Activity {
+
+    private ShareDialog mShareDialog;
 
     public final static String TOTAL_TIME = "total_time";
 
@@ -55,6 +58,9 @@ public class GameResultActivity extends Activity {
         tvYourTimeDifficulty.setText("Your total time for this " +
                 Utils.getDifficultyInString(mSelectedDifficulty) + " round is:");
         tvTotalTime.setText(Utils.formatMillisToSeconds(totalTime));
+
+        // Create Facebook ShareDialog instance
+        mShareDialog = new ShareDialog(this);
 
         if (!hasBeatenPreviousBestTimes(totalTime)) {
             tvNewBestTime.setVisibility(View.INVISIBLE);
@@ -96,7 +102,9 @@ public class GameResultActivity extends Activity {
                 swap = prevTime;
             }
         }
-        editor.commit();
+        // editor.commit() --> editor.apply()
+        // apply() handles the task in background
+        editor.apply();
 
         return inserted;
     }

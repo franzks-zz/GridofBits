@@ -24,15 +24,27 @@
 
 package com.franzsarmiento.gridofbits;
 
+import android.app.Activity;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.util.Base64;
+import android.util.Log;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * Wrapper class for all static utility methods used in more than one class.
  */
 public class Utils {
-
+    private static final String TAG = "Utils";
     public static String formatMillisToSeconds(long millis) {
         long deciseconds = millis / 100;
-        String time = deciseconds / 10 + "." + deciseconds % 10 + " seconds";
-        return time;
+        // Removed redundancy
+        return deciseconds / 10 + "." + deciseconds % 10 + " seconds";
     }
 
     public static String getDifficultyInString(int difficulty) {
@@ -47,4 +59,29 @@ public class Utils {
         return null;
     }
 
+    public static String urlEncode(String s) {
+        try {
+            return URLEncoder.encode(s, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            Log.wtf(TAG, "UTF-8 should always be supported", e);
+            throw new RuntimeException("URLEncoder.encode() failed for " + s);
+        }
+    }
+
+    // Get keyhash directly from device
+    public static void getFacebookKeyhash(Activity activity){
+        // Add code to print out the key hash
+        try {
+            PackageInfo info = activity.getPackageManager().getPackageInfo(
+                    "com.facebook.samples.hellofacebook",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

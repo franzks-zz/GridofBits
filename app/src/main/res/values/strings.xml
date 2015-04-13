@@ -36,14 +36,14 @@
     <string name="how_to_play_rows_example">
         For example, if we have found the decimal number "10" to the right of a row of bits, those same bits should look like this:
     </string>
+    <string name="how_to_play_sum_green_explanation">
+        Note: the box containing the decimal number 10 is colored green because as you continue toggling, any rows and columns are automatically converted from gray to green if that particular row or column is already correct. In this case, all the bits in the row is toggled correctly so the box containing 10 was converted to green.
+    </string>
     <string name="how_to_play_cols_example">
         For example, if we found "10" under a column of bits, the bits should be toggled as follows:
     </string>
     <string name="how_to_play_example_explanation">
         This is because the decimal values of each bit are 8-4-2-1 (8 is the most significant bit, while 1 is the least significant) and 10 is equal to 8 + 2, so we only toggle the bits representing 8 and 2, resulting to the binary number 1010. 8-4-2-1 is for the 4x4 grid, but since each digit in a binary number is simply double the previous one (each digit is a power of 2), this means a 6x6 grid has the following values for each row and column: 32-16-8-4-2-1. Likewise for the 8x8 grid: 128-64-32-16-8-4-2-1.
-    </string>
-    <string name="how_to_play_toggle_sums">
-        As the grid gets larger, it also gets increasingly difficult to remember which rows and columns you\'ve already finished. You may also tap on the decimal sums (the gray boxes) to turn them green for you to remember which rows and columns are already done.
     </string>
     <string name="how_to_play_winning_condition">
         You win when the correct bits have been toggled for the entire grid!

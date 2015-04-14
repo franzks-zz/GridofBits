@@ -24,12 +24,17 @@
 
 package com.franzsarmiento.gridofbits;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +79,4 @@ public class HomeActivity extends BaseActivity {
         startActivity(intent);
     }
 
-    @Override
-    public void onConnected(Bundle bundle) {
-
-    }
 }

@@ -26,6 +26,7 @@ package com.franzsarmiento.gridofbits;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -46,7 +47,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class GameActivity extends BaseActivity {
+public class GameActivity extends Activity {
 
     public final static String SELECTED_DIFFICULTY = "selected_difficulty";
 
@@ -389,10 +390,5 @@ public class GameActivity extends BaseActivity {
         });
         animator.setDuration(1000);
         animator.start();
-    }
-
-    @Override
-    public void onConnected(Bundle bundle) {
-
     }
 }

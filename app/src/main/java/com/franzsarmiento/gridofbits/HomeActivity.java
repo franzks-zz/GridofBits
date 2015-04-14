@@ -33,6 +33,7 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.facebook.FacebookSdk;
 
 public class HomeActivity extends Activity {
 
@@ -40,6 +41,9 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        // Initialize Facebook SDK
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
     }
 
     public void btnPlayEasyOnClick(View view) {

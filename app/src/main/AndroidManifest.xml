@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.franzsarmiento.gridofbits" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <supports-screens
         android:smallScreens="false" />
 
@@ -35,6 +37,22 @@
             android:label="@string/title_activity_best_times"
             android:screenOrientation="portrait" >
         </activity>
+
+        <!-- Activity for Facebook Dialogs -->
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
+        <!-- ContentProvider for Facebook Sharing -->
+        <provider android:authorities="com.facebook.app.FacebookContentProviderMY_FACEBOOK_APP_ID"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true" />
+        <meta-data android:name="com.facebook.sdk.ApplicationName"
+            android:value="@string/app_name"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>

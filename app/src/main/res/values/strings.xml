@@ -16,6 +16,10 @@
     <string name="your_time">Your time is:</string>
     <string name="new_best_time">This has been recorded as one of your new best times!</string>
     <string name="play_again">Play Again!</string>
+    <string name="share_score">Share Your Score!</string>
+    <string name="share_to">Share to</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
 
     <string name="title_activity_best_times">BestTimesActivity</string>
     <string name="easy">Easy</string>

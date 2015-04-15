@@ -6,6 +6,8 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.util.Log;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
 import com.facebook.FacebookDialog;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
@@ -19,15 +21,16 @@ public class ShareManager {
     private final String TAG = "ShareManager";
 
     // Share via Facebook
-    private void shareBitScoreFacebook(Activity activity, FacebookDialog mShareDialog, String shareFacebook) {
+    protected void shareBitScoreFacebook(Activity activity, String shareFacebook) {
+        ShareDialog shareDialog = new ShareDialog(activity);
+
         if (ShareDialog.canShow(ShareLinkContent.class)) {
             ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                    .setContentTitle(activity.getString(R.string.app_name))
-                    .setContentDescription(shareFacebook)
-                    .setContentUrl(Uri.parse(activity.getString(R.string.url_play_store)))
+                    .setContentUrl(Uri.parse("http://goo.gl/FLkfJy"))
+                    .setContentTitle(shareFacebook)
                     .build();
 
-            mShareDialog.show(linkContent);
+            shareDialog.show(linkContent);
         } else {
             Intent intentFacebook = new Intent(Intent.ACTION_VIEW);
             intentFacebook.setType("text/plain");
@@ -44,7 +47,7 @@ public class ShareManager {
     }
 
     // Share via Twitter
-    private void shareBitScoreTwitter(Activity activity, String shareTweet) {
+    protected void shareBitScoreTwitter(Activity activity, String shareTweet) {
         // Create intent using ACTION_VIEW and a normal Twitter url:
         String tweetUrl = String.format("https://twitter.com/intent/tweet?text=%s&url=%s", Utils.urlEncode(shareTweet), Utils.urlEncode(""));
         Intent intentTwitter = new Intent(Intent.ACTION_VIEW, Uri.parse(tweetUrl));
@@ -60,7 +63,7 @@ public class ShareManager {
     }
 
     // Share via Email srsly?
-    private void shareBitScoreEmail(Activity activity, String shareEmail) {
+    protected void shareBitScoreEmail(Activity activity, String shareEmail) {
         Intent intentEmail = new Intent(Intent.ACTION_SEND);
         intentEmail.setType("message/rfc822");
         intentEmail.putExtra(Intent.EXTRA_SUBJECT, "Email subject");

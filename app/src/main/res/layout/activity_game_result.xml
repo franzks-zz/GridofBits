@@ -50,6 +50,11 @@
             android:id="@+id/btnPlayAgain"
             android:onClick="btnPlayAgainOnClick" />
 
+        <Button style="@style/default_base_button"
+            android:text="@string/share_score"
+            android:id="@+id/btnShareScore"
+            android:onClick="btnShareScoreOnClick" />
+
     </LinearLayout>
 
 </RelativeLayout>

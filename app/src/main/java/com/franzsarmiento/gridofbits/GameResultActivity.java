@@ -25,7 +25,9 @@
 package com.franzsarmiento.gridofbits;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,9 +38,10 @@ import com.facebook.share.widget.ShareDialog;
 
 public class GameResultActivity extends Activity {
 
-    private ShareDialog mShareDialog;
+    private ShareManager mShareManager;
 
     public final static String TOTAL_TIME = "total_time";
+    private long mTotalTime;
 
     private int mSelectedDifficulty;
 
@@ -49,7 +52,7 @@ public class GameResultActivity extends Activity {
 
         mSelectedDifficulty = getIntent().getIntExtra(
                 GameActivity.SELECTED_DIFFICULTY, GameActivity.DIFFICULTY_EASY);
-        long totalTime = getIntent().getLongExtra(TOTAL_TIME, 0);
+        mTotalTime = getIntent().getLongExtra(TOTAL_TIME, 0);
 
         TextView tvYourTimeDifficulty = (TextView) findViewById(R.id.tvYourTimeDifficulty);
         TextView tvTotalTime = (TextView) findViewById(R.id.tvTotalTime);
@@ -57,12 +60,11 @@ public class GameResultActivity extends Activity {
 
         tvYourTimeDifficulty.setText("Your total time for this " +
                 Utils.getDifficultyInString(mSelectedDifficulty) + " round is:");
-        tvTotalTime.setText(Utils.formatMillisToSeconds(totalTime));
+        tvTotalTime.setText(Utils.formatMillisToSeconds(mTotalTime));
 
-        // Create Facebook ShareDialog instance
-        mShareDialog = new ShareDialog(this);
+        mShareManager = new ShareManager();
 
-        if (!hasBeatenPreviousBestTimes(totalTime)) {
+        if (!hasBeatenPreviousBestTimes(mTotalTime)) {
             tvNewBestTime.setVisibility(View.INVISIBLE);
         }
     }
@@ -113,6 +115,28 @@ public class GameResultActivity extends Activity {
         Intent intent = new Intent(this, GameActivity.class);
         intent.putExtra(GameActivity.SELECTED_DIFFICULTY, mSelectedDifficulty);
         startActivity(intent);
+    }
+
+    public void btnShareScoreOnClick(View view) {
+        final String message = "I've finished the Grid of Bits " + Utils.getDifficultyInString(
+                mSelectedDifficulty) + " Round in " + Utils.formatMillisToSeconds(mTotalTime) + "!";
+        final Activity activity = this;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.share_to);
+        builder.setPositiveButton(R.string.facebook, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                mShareManager.shareBitScoreFacebook(activity, message);
+            }
+        });
+        builder.setNegativeButton(R.string.twitter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                mShareManager.shareBitScoreTwitter(activity, message);
+            }
+        });
+        builder.show();
     }
 
     @Override

@@ -201,7 +201,10 @@ public class GameActivity extends Activity {
                 toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-                        mPlayer.start();
+                        if (SharedPreferencesUtil.getInstance(GameActivity.this)
+                                .isSoundEffectsEnabled()) {
+                            mPlayer.start();
+                        }
                         checkIfWon(final_row, final_col, checked);
                     }
                 });

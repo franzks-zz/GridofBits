@@ -13,4 +13,4 @@ This is a very simple Android game that's made for practicing mentally convertin
 
 ### Note
 
-Unfortunately, real life got in the way for me and I'm currently unable to work on updates for this project due to lack of time. This means this repo is read-only for now for people that just wants to see the code. I don't have any guarantees yet for people that want to contribute. :(
+Unfortunately, real life got in the way for me and I'm currently unable to work on updates for this project due to lack of time. This means this repo is read-only for now for people that just want to see the code. I don't have any guarantees for people that want to contribute. :(

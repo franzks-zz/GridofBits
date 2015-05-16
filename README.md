@@ -10,3 +10,7 @@ This is a very simple Android game that's made for practicing mentally convertin
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+### Note
+
+Unfortunately, real life got in the way for me and I'm currently unable to work on updates for this project due to lack of time. This means this repo is read-only for now for people that just wants to see the code. I don't have any guarantees yet for people that want to contribute. :(

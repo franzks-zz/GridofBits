@@ -51,4 +51,7 @@
     <string name="one">1</string>
     <string name="zero">0</string>
     <string name="ten">10</string>
+
+    <string name="sound_effects_on">Sound Effects On</string>
+    <string name="sound_effects_off">Sound Effects Off</string>
 </resources>

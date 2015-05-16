@@ -40,6 +40,11 @@
             android:id="@+id/btnHowToPlay"
             android:onClick="btnHowToPlayOnClick" />
 
+        <Button style="@style/default_base_button"
+                android:text="@string/how_to_play"
+                android:id="@+id/btnSoundEffects"
+                android:onClick="btnSoundEffectsOnClick" />
+
     </LinearLayout>
 
     <TextView
